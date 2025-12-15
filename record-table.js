@@ -98,44 +98,73 @@ removeBtn.addEventListener("click", removePlayer);
 initPlayers();
 
 
-
 function attachCellHandler(td) {
+  let startX = 0;
+  let startY = 0;
+  let moved = false;
   let pressTimer = null;
   let longPressed = false;
 
-  const update = (delta) => {
-    let v = Number(td.dataset.value);
+  const MOVE_THRESHOLD = 10; // px
+
+  function update(delta) {
+    let v = Number(td.dataset.value || 0);
     v = Math.max(0, v + delta);
     td.dataset.value = v;
     td.textContent = v === 0 ? "" : v;
-  };
+  }
 
-  // === 按下 ===
-  const startPress = (e) => {
+  /* ===== 手機 touch ===== */
+  td.addEventListener("touchstart", (e) => {
+    const t = e.touches[0];
+    startX = t.clientX;
+    startY = t.clientY;
+    moved = false;
+    longPressed = false;
+
+    pressTimer = setTimeout(() => {
+      if (!moved) {
+        longPressed = true;
+        update(-1);
+        navigator.vibrate?.(10);
+      }
+    }, 450);
+  }, { passive: true });
+
+  td.addEventListener("touchmove", (e) => {
+    const t = e.touches[0];
+    const dx = Math.abs(t.clientX - startX);
+    const dy = Math.abs(t.clientY - startY);
+
+    if (dx > MOVE_THRESHOLD || dy > MOVE_THRESHOLD) {
+      moved = true;
+      clearTimeout(pressTimer);
+    }
+  }, { passive: true });
+
+  td.addEventListener("touchend", () => {
+    clearTimeout(pressTimer);
+    if (!moved && !longPressed) {
+      update(+1);
+    }
+  });
+
+  /* ===== 桌機 mouse ===== */
+  td.addEventListener("mousedown", () => {
     longPressed = false;
     pressTimer = setTimeout(() => {
       longPressed = true;
-      update(-1); // 長按 -1
-      if (navigator.vibrate) navigator.vibrate(10);
+      update(-1);
     }, 450);
-    e.preventDefault();
-  };
+  });
 
-  // === 放開 ===
-  const endPress = (e) => {
-    if (pressTimer) clearTimeout(pressTimer);
-    if (!longPressed) update(+1); // 短按 +1
-    e.preventDefault();
-  };
+  td.addEventListener("mouseup", () => {
+    clearTimeout(pressTimer);
+    if (!longPressed) update(+1);
+  });
 
-  // 手機
-  td.addEventListener("touchstart", startPress, { passive: false });
-  td.addEventListener("touchend", endPress, { passive: false });
-
-  // 桌機
-  td.addEventListener("mousedown", startPress);
-  td.addEventListener("mouseup", endPress);
   td.addEventListener("mouseleave", () => {
-    if (pressTimer) clearTimeout(pressTimer);
+    clearTimeout(pressTimer);
+    longPressed = false;
   });
 }

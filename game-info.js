@@ -1,19 +1,50 @@
-let oppScore = 0;
-const scoreEl = document.getElementById("oppScore");
+/* =========================
+   Game Info (state-based)
+   ========================= */
 
-document.querySelectorAll(".score .btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    oppScore += Number(btn.dataset.delta);
-    if (oppScore < 0) oppScore = 0;
-    scoreEl.textContent = oppScore;
+function initGameInfo() {
+  /* === Date === */
+  const dateInput = document.getElementById("gameDate");
+  dateInput.value = gameState.meta.date || "";
+
+  dateInput.addEventListener("change", () => {
+    gameState.meta.date = dateInput.value;
+    saveState();
   });
-});
 
-const dateInput = document.getElementById("gameDate");
+  dateInput.addEventListener("click", () => {
+    dateInput.showPicker?.();
+  });
 
-const today = new Date();
-dateInput.value = today.toISOString().split("T")[0];
+  /* === 隊伍名稱 === */
+  const teamAInput = document.getElementById("teamA");
+  const teamBInput = document.getElementById("teamB");
 
-dateInput.addEventListener("click", () => {
-  dateInput.showPicker();
-});
+  teamAInput.value = gameState.meta.teamA || "";
+  teamBInput.value = gameState.meta.teamB || "";
+
+  teamAInput.addEventListener("input", () => {
+    gameState.meta.teamA = teamAInput.value;
+    saveState();
+  });
+
+  teamBInput.addEventListener("input", () => {
+    gameState.meta.teamB = teamBInput.value;
+    saveState();
+  });
+
+  /* === 對手失分 === */
+  const scoreEl = document.getElementById("oppScore");
+  scoreEl.textContent = gameState.meta.opponentScore || 0;
+
+  document.querySelectorAll(".score .btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const delta = Number(btn.dataset.delta);
+      gameState.meta.opponentScore =
+        Math.max(0, gameState.meta.opponentScore + delta);
+
+      scoreEl.textContent = gameState.meta.opponentScore;
+      saveState();
+    });
+  });
+}

@@ -165,6 +165,19 @@ body {
     color: #a96a7d;
   }
 
+  #exportBtn {
+    background-color: #008aa7;
+  }
+  
+  #exportBtn:hover {
+    background-color: #11a3c0;
+  }
+  
+  #exportBtn:active {
+    color: #008aa7;
+    background-color: #c6eef6;
+  }
+
   table{
       margin: 0 auto;
       border-collapse:collapse;
@@ -376,6 +389,15 @@ body {
   #clearRecord-m:active {
     color: #e75570;
     background-color: #f6edd9;
+  }
+
+  #exportBtn-m {
+    background-color: #00b3d7;
+  }
+  
+  #exportBtn-m:active {
+    color: #008aa7;
+    background-color: #c6eef6;
   }
 
   .record-table.vertical {

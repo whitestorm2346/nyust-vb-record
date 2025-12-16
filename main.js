@@ -108,3 +108,7 @@ mobileQuery.addEventListener("change", () => {
     applyViewMode();
   }, 0);
 });
+
+
+document.getElementById("exportBtn").addEventListener("click", exportRecordAsImage);
+document.getElementById("exportBtn-m").addEventListener("click", exportRecordAsImage);

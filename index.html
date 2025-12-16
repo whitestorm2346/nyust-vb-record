@@ -36,6 +36,7 @@
           <button id="addPlayer">新增球員</button>
           <button id="removePlayer">減少球員</button>
           <button id="clearRecord">清除記錄</button>
+          <button id="exportBtn">匯出圖片</button>
         </div>
 
         <table id="records">
@@ -126,7 +127,8 @@
         <div class="player-control">
           <button id="addPlayer-m">新增球員</button>
           <button id="removePlayer-m">減少球員</button>
-          <button id="clearRecord-m">清除記錄</button>
+          <button id="clearRecord-m">清除</button>
+          <button id="exportBtn-m">匯出</button>
         </div>
 
         <div class="player-select-wrapper">
@@ -136,6 +138,9 @@
         </div>
       </section>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="export.js" defer></script>
 
     <script src="/main.js" defer></script>
     <script src="/storage.js" defer></script>

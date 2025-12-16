@@ -7,78 +7,134 @@
     <title>雲科大男排記錄表</title>
   </head>
   <body>
-    <section class="game-info">
-      <!-- Date -->
-      <div class="info-block">
-        <span class="label">Date: </span>
-        <input type="date" class="custom-date" id="gameDate" />
-      </div>
+    <div class="desktop-view">
+      <section class="game-info">
+        <!-- Date -->
+        <div class="info-block">
+          <span class="label">Date: </span>
+          <input type="date" class="custom-date" id="gameDate" />
+        </div>
 
-      <!-- Teams -->
-      <div class="info-block teams">
-        <input type="text" placeholder="隊伍名" id="teamA" />
-        <span class="vs">vs</span>
-        <input type="text" placeholder="隊伍名" id="teamB" />
-      </div>
+        <!-- Teams -->
+        <div class="info-block teams">
+          <input type="text" placeholder="隊伍名" id="teamA" />
+          <span class="vs">vs</span>
+          <input type="text" placeholder="隊伍名" id="teamB" />
+        </div>
 
-      <!-- Opponent Score -->
-      <div class="info-block score">
-        <span class="label">對手失分</span>
-        <button class="btn" data-delta="-1">-</button>
-        <span id="oppScore">0</span>
-        <button class="btn" data-delta="1">+</button>
-      </div>
-    </section>
-    <section class="player-records">
-      <div class="player-control">
-        <button id="addPlayer">新增球員</button>
-        <button id="removePlayer">減少球員</button>
-      </div>
+        <!-- Opponent Score -->
+        <div class="info-block score">
+          <span class="label">對手失分</span>
+          <button class="btn" data-delta="-1">-</button>
+          <span id="oppScore">0</span>
+          <button class="btn" data-delta="1">+</button>
+        </div>
+      </section>
+      <section class="player-records">
+        <div class="player-control">
+          <button id="addPlayer">新增球員</button>
+          <button id="removePlayer">減少球員</button>
+          <button id="clearRecord">清除記錄</button>
+        </div>
 
-      <table id="records">
-        <thead>
-          <tr>
-            <th class="num" rowspan="2">背號</th>
-            <th colspan="3" class="L R">發球</th>
-            <th colspan="2" class="L R">一傳</th>
-            <th colspan="3" class="L R">攻擊</th>
-            <th colspan="3" class="L R">攔網</th>
-            <th colspan="2" class="L R">防守</th>
-            <th colspan="3" class="L R">吊球</th>
-            <th colspan="2" class="L R">小球</th>
-            <th colspan="2" class="L R">修正</th>
-          </tr>
+        <table id="records">
+          <thead>
+            <tr>
+              <th class="num" rowspan="2">背號</th>
+              <th colspan="3" class="L R">發球</th>
+              <th colspan="2" class="L R">一傳</th>
+              <th colspan="3" class="L R">攻擊</th>
+              <th colspan="3" class="L R">攔網</th>
+              <th colspan="2" class="L R">防守</th>
+              <th colspan="3" class="L R">吊球</th>
+              <th colspan="2" class="L R">小球</th>
+              <th colspan="2" class="L R">修正</th>
+            </tr>
 
-          <tr>
-            <th class="L">✓</th>
-            <th>○</th>
-            <th class="R">X</th>
-            <th class="L">○</th>
-            <th class="R">X</th>
-            <th class="L">✓</th>
-            <th>○</th>
-            <th class="R">X</th>
-            <th class="L">✓</th>
-            <th>○</th>
-            <th class="R">X</th>
-            <th class="L">○</th>
-            <th class="R">X</th>
-            <th class="L">✓</th>
-            <th>○</th>
-            <th class="R">X</th>
-            <th class="L">○</th>
-            <th class="R">X</th>
-            <th class="L">○</th>
-            <th class="R">X</th>
-          </tr>
-        </thead>
-        <tbody id="players"></tbody>
-      </table>
-    </section>
+            <tr>
+              <th class="L">✓</th>
+              <th>○</th>
+              <th class="R">X</th>
+              <th class="L">○</th>
+              <th class="R">X</th>
+              <th class="L">✓</th>
+              <th>○</th>
+              <th class="R">X</th>
+              <th class="L">✓</th>
+              <th>○</th>
+              <th class="R">X</th>
+              <th class="L">○</th>
+              <th class="R">X</th>
+              <th class="L">✓</th>
+              <th>○</th>
+              <th class="R">X</th>
+              <th class="L">○</th>
+              <th class="R">X</th>
+              <th class="L">○</th>
+              <th class="R">X</th>
+            </tr>
+          </thead>
+          <tbody id="players"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <div class="mobile-view">
+      <section class="game-info">
+        <!-- Date -->
+        <div class="info-block">
+          <span class="label">Date: </span>
+          <input type="date" class="custom-date" id="gameDate-m" />
+        </div>
+
+        <!-- Teams -->
+        <div class="info-block teams">
+          <input type="text" placeholder="隊伍名" id="teamA-m" />
+          <span class="vs">vs</span>
+          <input type="text" placeholder="隊伍名" id="teamB-m" />
+        </div>
+
+        <!-- Opponent Score -->
+        <div class="info-block score">
+          <span class="label">對手失分</span>
+          <button class="btn" data-delta="-1">-</button>
+          <span id="oppScore-m">0</span>
+          <button class="btn" data-delta="+1">+</button>
+        </div>
+      </section>
+
+      <section class="player-records-m">
+        <div class="player-header">
+          <label>
+            背號：
+            <input
+              id="playerNumberInput"
+              type="number"
+              inputmode="numeric"
+              placeholder=""
+            />
+          </label>
+        </div>
+
+        <table class="record-table vertical">
+          <tbody id="recordPageBody"></tbody>
+        </table>
+      </section>
+
+      <section class="footer">
+        <div class="player-control">
+          <button id="addPlayer-m">新增球員</button>
+          <button id="removePlayer-m">減少球員</button>
+          <button id="clearRecord-m">清除記錄</button>
+        </div>
+        <div class="player-select" id="players-m"></div>
+      </section>
+    </div>
 
     <script src="/main.js" defer></script>
     <script src="/storage.js" defer></script>
     <script src="/game-info.js" defer></script>
     <script src="/record-table.js" defer></script>
+    <script src="/record-page.js" defer></script>
   </body>
 </html>

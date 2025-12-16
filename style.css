@@ -7,194 +7,453 @@ body {
     background-color: #e0f7eb;
 }
 
-.game-info {
+/* 平板以上 */
+@media (min-width: 768px) {
+  .desktop-view { 
+    display: block; 
+  }
+  
+  .mobile-view  { 
+    display: none; 
+  }
+
+  .game-info {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 3rem;
     font-family: inherit;
     font-size: 2rem; /* ⭐ 全區字體大小 */
-}
+  }
 
-.info-block {
+  .info-block {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      padding: 0.4rem 0.8rem;
+      height: 3.2rem;
+
+      border-bottom: 2px solid #000;
+      /* border-radius: 0.6rem; */
+      box-sizing: border-box;
+  }
+
+  .info-block input {
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-size: 2rem;
+    font-family: inherit;
+    text-align: center;
+
+    height: 100%;
+  }
+
+  .info-block .label {
+    white-space: nowrap;
+    font-size: 1.6rem;   /* 稍微比主字小一點，看起來更平衡 */
+  }
+
+  .custom-date {
+    font-size: 2rem;
+    border: none;
+    border-bottom: 2px solid #333;
+    background: transparent;
+    padding: 4px 0;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .custom-date:hover {
+    cursor: pointer;
+  }
+
+  /* 移除 yyyy/mm/dd 預設樣式 */
+  .custom-date::-webkit-datetime-edit {
+    color: #333;
+  }
+
+  /* 隱藏日曆 icon（Chrome / Edge） */
+  .custom-date::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+  }
+
+
+  .teams input {
+    width: 8rem;
+  }
+
+  .vs {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 0 0.3rem;
+  }
+
+  .score span {
+    min-width: 3rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  .btn {
+    width: 2.6rem;
+    height: 2.6rem;
+
+    border: none;
+    border-radius: 5rem;
+
+    background: #2a8230;
+    color: #fff;
+    cursor: pointer;
+
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .btn:active {
+    background: #3b9d41;
+  }
+
+  .player-records {
+      margin: 2rem auto;
+      /* padding: 0 .5rem; */
+  }
+
+  .player-control {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+  }
 
-    padding: 0.4rem 0.8rem;
-    height: 3.2rem;
+  .player-control button {
+      display: block;
+      font-size: 2rem;
+      margin: 2rem auto;
+      padding: .5rem 1.5rem;
+      border: none;
+      border-radius: 5rem;
+      background-color: #2a8230;
+      color: #fff;
+      user-select: none;
+  }
 
-    border-bottom: 2px solid #000;
-    /* border-radius: 0.6rem; */
+  .player-control button:hover {
+      background-color: #3b9d41;
+      cursor: pointer;
+  }
+
+  .player-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: #939b94;
+  }
+
+  #clearRecord {
+    background-color: #d2334f;
+  }
+
+  #clearRecord:hover {
+    background-color: #e6506b;
+  }
+
+  #clearRecord:active {
+    background-color: #f8e3e8;
+    color: #a96a7d;
+  }
+
+  table{
+      margin: 0 auto;
+      border-collapse:collapse;
+      width:95%;
+      font-family: "Noto Sans TC", system-ui;
+      font-size: 1.5rem;
+  }
+
+  th, td{
+      border:2px solid #000;
+      text-align:center;
+      padding: 1rem 0;
+      min-width:42px;
+  }
+
+  thead th{
+      font-weight:700;
+  }
+    
+  .num { 
+      width:7rem; 
+  }
+
+  .num input {
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    text-align: center;
+    font-size: 2rem;
+    font-family: inherit;
+  }
+
+    
+  .gray { 
+      background:#c5e4d3; 
+  }
+
+  .L { 
+      border-left:2.5px solid #000; 
+  }
+
+  .R { 
+      border-right:2.5px solid #000; 
+  }
+
+  .cell {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;      /* iOS */
+    -webkit-touch-callout: none;    /* iOS 長按選單 */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;     /* 告訴瀏覽器：我自己處理 */
+    font-size: 2rem;
+  }
+  .cell:active {
+    background: #d0e4ff;
+  }
 }
 
-.info-block input {
-  border: none;
-  outline: none;
-  background: transparent;
+/* 手機直立 */
+@media (max-width: 767px) {
+  .desktop-view { 
+    display: none; 
+  }
 
-  font-size: 2rem;
-  font-family: inherit;
+  .mobile-view  { 
+    display: block; 
+  }
+
+  .game-info {
+    padding-top: 1.5rem;
+    font-family: inherit;
+    font-size: 1.5rem; /* ⭐ 全區字體大小 */
+  }
+
+  .info-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: .5rem auto;
+      padding: 0.4rem 0.8rem;
+      /* height: 3.2rem; */
+      width: 80%;
+      border-bottom: 1px solid #000;
+      /* border-radius: 0.6rem; */
+      box-sizing: border-box;
+  }
+
+  .info-block input {
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-size: 2rem;
+    font-family: inherit;
+    text-align: center;
+
+    height: 100%;
+  }
+
+  .info-block .label {
+    white-space: nowrap;
+    font-size: 1.6rem;   /* 稍微比主字小一點，看起來更平衡 */
+  }
+
+  .custom-date {
+    font-size: 2rem;
+    border: none;
+    border-bottom: 2px solid #333;
+    background: transparent;
+    padding: 4px 0;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .custom-date:hover {
+    cursor: pointer;
+  }
+
+  /* 移除 yyyy/mm/dd 預設樣式 */
+  .custom-date::-webkit-datetime-edit {
+    color: #333;
+  }
+
+  /* 隱藏日曆 icon（Chrome / Edge） */
+  .custom-date::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    cursor: pointer;
+  }
+
+
+  .teams input {
+    width: 8rem;
+  }
+
+  .vs {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 0 0.3rem;
+  }
+
+  .score span {
+    min-width: 3rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  .btn {
+    width: 2rem;
+    height: 2rem;
+
+    border: none;
+    border-radius: 5rem;
+
+    background: #2a8230;
+    color: #fff;
+    cursor: pointer;
+
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .btn:active {
+    background: #3b9d41;
+  }
+
+  .footer {
+    position: sticky;
+    left: 0px;
+    bottom: 0px;
+    height: fit-content;
+    padding: 1.5rem 0;
+    width: 100%;
+    background-color: #517347;
+  }
+
+  .player-control {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .player-control button {
+    padding: .5rem .75rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #5fc04d;
+    color: #f6edd9;
+  }
+
+  .player-control button:active {
+    color: #5fc04d;
+    background-color: #f6edd9;
+  }
+
+  #clearRecord-m {
+    background-color: #e75570;
+  }
+
+  #clearRecord-m:active {
+    color: #e75570;
+    background-color: #f6edd9;
+  }
+
+  .record-table.vertical {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.record-table.vertical td {
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.skill-label {
+  width: 4.5rem;
+  font-weight: 600;
   text-align: center;
-
-  height: 100%;
-}
-
-.info-block .label {
   white-space: nowrap;
-  font-size: 1.6rem;   /* 稍微比主字小一點，看起來更平衡 */
 }
 
-.custom-date {
+.skill-cells {
+  display: flex;
+  gap: 8px;
+}
+
+.skill-cells .cell {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+.player-records-m {
+  padding-bottom: 5rem;
+}
+
+.player-header {
+  display: grid;
+  place-items: center;
+  margin: 2rem 0;
   font-size: 2rem;
+}
+
+.player-header label input {
+  font-size: 2rem;
+  width: 5rem;
+  text-align: center;
   border: none;
-  border-bottom: 2px solid #333;
-  background: transparent;
-  padding: 4px 0;
+  /* border-bottom: 2px solid #333; */
+  border-radius: 1rem;
   outline: none;
-  font-family: inherit;
 }
 
-.custom-date:hover {
-  cursor: pointer;
+.player-select {
+  padding: 1rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* 移除 yyyy/mm/dd 預設樣式 */
-.custom-date::-webkit-datetime-edit {
+.player-btn {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background: #fff8ea;
+  color: #0e786a;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.player-btn.active {
+  background: #ffd786;
   color: #333;
 }
 
-/* 隱藏日曆 icon（Chrome / Edge） */
-.custom-date::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  cursor: pointer;
-}
-
-
-.teams input {
-  width: 8rem;
-}
-
-.vs {
-  font-weight: 700;
-  font-size: 1.8rem;
-  margin: 0 0.3rem;
-}
-
-.score span {
-  min-width: 3rem;
-  text-align: center;
-  font-weight: 700;
-  font-size: 2rem;
-}
-
-.btn {
-  width: 2.6rem;
-  height: 2.6rem;
-
-  border: none;
-  border-radius: 5rem;
-
-  background: #2a8230;
-  color: #fff;
-  cursor: pointer;
-
-  font-size: 1.8rem;
-  line-height: 1;
-  padding: 0;
-}
-
-.btn:active {
-  background: #3b9d41;
-}
-
-.player-records {
-    margin: 2rem 10rem;
-}
-
-.player-control {
-  display: flex;
-  align-items: center;
-}
-
-.player-control button {
-    display: block;
-    font-size: 2rem;
-    margin: 2rem auto;
-    padding: .5rem 1.5rem;
-    border: none;
-    border-radius: 5rem;
-    background-color: #2a8230;
-    color: #fff;
-    user-select: none;
-}
-
-.player-control button:hover {
-    background-color: #3b9d41;
-    cursor: pointer;
-}
-
-.player-controls button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  background-color: #939b94;
-}
-
-table{
-    border-collapse:collapse;
-    width:100%;
-    font-family: "Noto Sans TC", system-ui;
-    font-size: 1.5rem;
-}
-
-th, td{
-    border:2px solid #000;
-    text-align:center;
-    padding: 1rem 0;
-    min-width:42px;
-}
-
-thead th{
-    font-weight:700;
-}
-  
-.num { 
-    width:7rem; 
-}
-
-.num input {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-
-  border: none;
-  outline: none;
-  background: transparent;
-
-  text-align: center;
-  font-size: 2rem;
-  font-family: inherit;
-}
-
-  
-.gray { 
-    background:#c5e4d3; 
-}
-
-.L { 
-    border-left:2.5px solid #000; 
-}
-
-.R { 
-    border-right:2.5px solid #000; 
-}
-
-.cell {
-  cursor: pointer;
-  user-select: none;
-  font-size: 2rem;
-}
-.cell:active {
-  background: #d0e4ff;
 }

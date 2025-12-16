@@ -37,17 +37,22 @@ function initGameInfo() {
     /* === 對手失分 === */
     const scoreEl = document.getElementById("oppScore");
     scoreEl.textContent = gameState.meta.opponentScore || 0;
-  
-    document.querySelectorAll(".score .btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const delta = Number(btn.dataset.delta);
-        gameState.meta.opponentScore =
-          Math.max(0, gameState.meta.opponentScore + delta);
-  
-        scoreEl.textContent = gameState.meta.opponentScore;
-        saveState();
-      });
-    });
+
+    const oppScoreAddBtn = document.getElementById("oppScoreAdd").addEventListener("click", () => {
+      gameState.meta.opponentScore =
+        Math.max(0, gameState.meta.opponentScore + 1);
+      
+      scoreEl.textContent = gameState.meta.opponentScore;
+      saveState();
+    })
+
+    const oppScoreMinusBtn = document.getElementById("oppScoreMinus").addEventListener("click", () => {
+      gameState.meta.opponentScore =
+        Math.max(0, gameState.meta.opponentScore - 1);
+      
+      scoreEl.textContent = gameState.meta.opponentScore;
+      saveState();
+    })
   }
   else if (detectViewMode() === "mobile"){
     /* === Date === */
@@ -83,16 +88,21 @@ function initGameInfo() {
     /* === 對手失分 === */
     const scoreEl = document.getElementById("oppScore-m");
     scoreEl.textContent = gameState.meta.opponentScore || 0;
-  
-    document.querySelectorAll(".score .btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const delta = Number(btn.dataset.delta);
-        gameState.meta.opponentScore =
-          Math.max(0, gameState.meta.opponentScore + delta);
-  
-        scoreEl.textContent = gameState.meta.opponentScore;
-        saveState();
-      });
-    });
+
+    const oppScoreAddBtn = document.getElementById("oppScoreAdd-m").addEventListener("click", () => {
+      gameState.meta.opponentScore =
+        Math.max(0, gameState.meta.opponentScore + 1);
+      
+      scoreEl.textContent = gameState.meta.opponentScore;
+      saveState();
+    })
+
+    const oppScoreMinusBtn = document.getElementById("oppScoreMinus-m").addEventListener("click", () => {
+      gameState.meta.opponentScore =
+        Math.max(0, gameState.meta.opponentScore - 1);
+      
+      scoreEl.textContent = gameState.meta.opponentScore;
+      saveState();
+    })
   }
 }

@@ -379,40 +379,59 @@ body {
   }
 
   .record-table.vertical {
-  width: 100%;
+  /* width: 100%; */
+  margin: 0 auto;
   border-collapse: collapse;
 }
 
+.record-table.vertical th,
 .record-table.vertical td {
-  padding: 8px;
-  vertical-align: middle;
+  text-align: center;
+  padding: .75rem;
+}
+
+.result-header {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .skill-label {
-  width: 4.5rem;
-  font-weight: 600;
-  text-align: center;
+  text-align: left;
   white-space: nowrap;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
-.skill-cells {
-  display: flex;
-  gap: 8px;
-}
-
-.skill-cells .cell {
-  width: 48px;
-  height: 48px;
+.cell {
+  width: 3.5rem;
+  height: 3.5rem;
   border: 1px solid #333;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
   user-select: none;
+  user-select: none;
+  -webkit-user-select: none;      /* iOS */
+  -webkit-touch-callout: none;    /* iOS 長按選單 */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;     /* 告訴瀏覽器：我自己處理 */
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
+.cell:active {
+  background-color: #97d1a9;
+}
+
+.empty {
+  background: transparent;
+}
+
+
 .player-records-m {
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
 }
 
 .player-header {
@@ -432,23 +451,41 @@ body {
   outline: none;
 }
 
+.player-select-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; /* iOS 慣性滑動 */
+  width: 80%;
+  margin: 0 auto;
+}
+
+
 .player-select {
-  padding: 1rem;
-  padding-top: 2rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
 .player-btn {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;       /* ⭐ 不要被壓扁 */
   border: none;
+  border-radius: 5rem;
+
+  font-size: 1.2rem;
+  font-weight: 500;
+
   background: #fff8ea;
   color: #0e786a;
-  font-size: 1.2rem;
-  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  user-select: none;
 }
 
 .player-btn.active {

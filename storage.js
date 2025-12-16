@@ -5,18 +5,6 @@ let gameState = {
   players: []
 };
 
-const SKILLS = [
-  { label: "發球", count: 3 },
-  { label: "一傳", count: 2 },
-  { label: "攻擊", count: 3 },
-  { label: "攔網", count: 3 },
-  { label: "防守", count: 2 },
-  { label: "吊球", count: 3 },
-  { label: "小球", count: 2 },
-  { label: "修正", count: 2 }
-];
-
-
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
 }

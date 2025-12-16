@@ -25,9 +25,9 @@
         <!-- Opponent Score -->
         <div class="info-block score">
           <span class="label">對手失分</span>
-          <button class="btn" data-delta="-1">-</button>
+          <button class="btn" id="oppScoreMinus">-</button>
           <span id="oppScore">0</span>
-          <button class="btn" data-delta="1">+</button>
+          <button class="btn" id="oppScoreAdd">+</button>
         </div>
       </section>
       <section class="player-records">
@@ -97,9 +97,9 @@
         <!-- Opponent Score -->
         <div class="info-block score">
           <span class="label">對手失分</span>
-          <button class="btn" data-delta="-1">-</button>
+          <button class="btn" id="oppScoreMinus-m">-</button>
           <span id="oppScore-m">0</span>
-          <button class="btn" data-delta="+1">+</button>
+          <button class="btn" id="oppScoreAdd-m">+</button>
         </div>
       </section>
 
@@ -127,7 +127,12 @@
           <button id="removePlayer-m">減少球員</button>
           <button id="clearRecord-m">清除記錄</button>
         </div>
-        <div class="player-select" id="players-m"></div>
+
+        <div class="player-select-wrapper">
+          <div class="player-select">
+            <!-- JS 動態產生球員背號按鈕 -->
+          </div>
+        </div>
       </section>
     </div>
 

@@ -23,7 +23,7 @@ function updateRemoveButtonState() {
 
 /* ========= Cell Handler（state-based） ========= */
 
-function attachCellHandler(td, playerData, cellIndex) {
+function attachCellHandlerDesktop(td, playerData, cellIndex) {
   let startX = 0, startY = 0;
   let moved = false;
   let pressTimer = null;
@@ -122,7 +122,7 @@ function createPlayerRow(playerData) {
     if ([0, 3, 5, 8, 11, 13, 16, 18].includes(i)) td.classList.add("L");
     if ([2, 4, 7, 10, 12, 15, 17, 19].includes(i)) td.classList.add("R");
 
-    attachCellHandler(td, playerData, i);
+    attachCellHandlerDesktop(td, playerData, i);
     tr.appendChild(td);
   });
 
